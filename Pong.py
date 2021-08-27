@@ -37,25 +37,40 @@ xMaquina = 0
 # posição y da máquina
 yMaquina = 0
 
-# verifica a cada frame se o jogo está rodando
-while gameRunning:
-    # limita o FPS em 60 quadros por segundo
-    gameClock.tick(FPS)
+def main():
+    # verifica a cada frame se o jogo está rodando
+    while gameRunning:
+        # limita o FPS em 60 quadros por segundo e salva o tempo que levou entre dois frames
+        deltaTime = gameClock.tick(FPS)
     
-    # verifica os eventos que estão na pool de eventos
-    for event in pygame.event.get():
-        # verifica se o X (da janela) foi pressionado, se sim, finalziada o jogo (gameRunning = False)
-        if(event.type == pygame.QUIT):
-            gameRunning = False
-        # verifica se uma tecla foi pressionada
-        if(event.type == pygame.KEYDOWN):
-            # verifica se a tecla é o ESC, se sim, finaliza o jogo (gameRunning = False)
-            if(event.key == pygame.K_ESCAPE):
+        # verifica os eventos que estão na pool de eventos
+        for event in pygame.event.get():
+            # verifica se o X (da janela) foi pressionado, se sim, finalziada o jogo (gameRunning = False)
+            if(event.type == pygame.QUIT):
                 gameRunning = False
+            # verifica se uma tecla foi pressionada
+            if(event.type == pygame.KEYDOWN):
+                # verifica se a tecla é o ESC, se sim, finaliza o jogo (gameRunning = False)
+                if(event.key == pygame.K_ESCAPE):
+                    gameRunning = False
             
-    # depois que você definiu o que desenhar, faça a atualização da tela (chamamos essa parte de double-buffer)
-    # o double-buffer evita flicks na tela
-    pygame.display.update()
+        update(deltaTime)
+        render(deltaTime)
+
+        # depois que você definiu o que desenhar, faça a atualização da tela (chamamos essa parte de double-buffer)
+        # o double-buffer evita flicks na tela
+        pygame.display.update()
+
+    # finaliza todos os módulos que foram iniciados
+    pygame.quit()
+
+# Atualiza as ações lógicas do jogo
+def update(deltaTime):
+    pass
+
+# Atualiza os gráficos na tela do jogo
+def render(deltaTime):
+    pygame.draw.rect(screen, (255, 255, 255), (xJogador, yJogador, alturaJogador, larguraJogador))
     
-# finaliza todos os módulos que foram iniciados
-pygame.quit()
+# Inicia o Programa
+main()
