@@ -4,7 +4,7 @@ import pygame
 screenSize = (800, 600)
 # cria a tela e salva a instância dessa tela em screen
 screen = pygame.display.set_mode(screenSize)
-pygame.display.set_caption("Big Bang")
+pygame.display.set_caption("Pong - Jogo")
 
 # cria uma instância do time.Clock() - vamos usar para limitar o fps
 gameClock = pygame.time.Clock()
@@ -12,15 +12,30 @@ gameClock = pygame.time.Clock()
 # cria uma variavel que verifica se o jogo ainda está rodando
 gameRunning = True
 
-# define o FPS
+# define o FPS do jogo
 FPS = 60
 
-# posição x do jogador
-x_jogador = 0
-# posição y do jogador
-y_jogador = 0
 # velocidade do jogador (1.0 / 60.0 é igual a 1 pixel por segundo)
-v_jogador = 1.0 / FPS
+velocidadeJogador = 1.0 / FPS
+# altura do jogador
+alturaJogador = 10
+# largura do jogador
+larguraJogador = 30
+# posição x do jogador
+xJogador = 0
+# posição y do jogador
+yJogador = 0
+
+# velocidade da máquina (1.0 / 60.0 é igual a 1 pixel por segundo)
+velocidadeMaquina = 1.0 / FPS
+# altura da máquina
+alturaMaquina = 10
+# largura da máquina
+larguraMaquina = 30
+# posição x da máquina
+xMaquina = 0
+# posição y da máquina
+yMaquina = 0
 
 # verifica a cada frame se o jogo está rodando
 while gameRunning:
