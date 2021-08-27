@@ -9,9 +9,6 @@ pygame.display.set_caption("Pong - Jogo")
 # cria uma instância do time.Clock() - vamos usar para limitar o fps
 gameClock = pygame.time.Clock()
 
-# cria uma variavel que verifica se o jogo ainda está rodando
-gameRunning = True
-
 # define o FPS do jogo
 FPS = 60
 
@@ -20,7 +17,7 @@ velocidadeJogador = 1.0 / FPS
 # altura do jogador
 alturaJogador = 10
 # largura do jogador
-larguraJogador = 30
+larguraJogador = 40
 # posição x do jogador
 xJogador = 0
 # posição y do jogador
@@ -31,13 +28,16 @@ velocidadeMaquina = 1.0 / FPS
 # altura da máquina
 alturaMaquina = 10
 # largura da máquina
-larguraMaquina = 30
+larguraMaquina = 40
 # posição x da máquina
 xMaquina = 0
 # posição y da máquina
 yMaquina = 0
 
 def main():
+    # cria uma variavel que verifica se o jogo ainda está rodando
+    gameRunning = True
+
     # verifica a cada frame se o jogo está rodando
     while gameRunning:
         # limita o FPS em 60 quadros por segundo e salva o tempo que levou entre dois frames
@@ -64,13 +64,17 @@ def main():
     # finaliza todos os módulos que foram iniciados
     pygame.quit()
 
-# Atualiza as ações lógicas do jogo
+# atualiza as ações lógicas do jogo
 def update(deltaTime):
     pass
 
-# Atualiza os gráficos na tela do jogo
+# atualiza os gráficos na tela do jogo
 def render(deltaTime):
+    # desenha o jogador
     pygame.draw.rect(screen, (255, 255, 255), (xJogador, yJogador, alturaJogador, larguraJogador))
+
+    # desenha a máquina
+    pygame.draw.rect(screen, (255, 255, 255), (xMaquina, yMaquina, alturaMaquina, larguraMaquina))
     
-# Inicia o Programa
+# inicia o programa (chama o main)
 main()
