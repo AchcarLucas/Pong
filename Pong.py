@@ -8,6 +8,12 @@ screenSize = (800, 600)
 screen = pygame.display.set_mode(screenSize)
 pygame.display.set_caption("Pong - Jogo")
 
+# inicializa a fonte
+pygame.font.init()
+
+# carrega uma fonte padrão (Arial)
+gameFont = pygame.font.SysFont("Arial", 35)
+
 # cria uma instância do time.Clock() - vamos usar para limitar o fps
 gameClock = pygame.time.Clock()
 
@@ -197,12 +203,13 @@ def gameMain():
 
 # atualiza as ações lógicas do jogo
 def update(deltaTime):
-    global variablesJogador
-    global variablesMaquina
-    global variablesBola
 
     # verifica se alguma tecla esta sendo pressionada 
     key = pygame.key.get_pressed()
+
+    '''
+        detecta as key e modifica a posição do jogador
+    '''
 
     # movimentação do jogador - subir e descer (leva em conta a velocidade do jogador e uma variação de tempo de dois frames)
     if(key[pygame.K_w] or key[pygame.K_UP]):
@@ -287,7 +294,7 @@ def update(deltaTime):
     """
 
      # verifica as colisões das bordas superior e inferior (reverte a velocidade y se ocorrer colisão)
-    if(variablesBola.y >= screenSize[1] - 2 * variablesBola.raio or variablesBola.y <= 0):
+    if(variablesBola.y >= screenSize[1] - variablesBola.raio or variablesBola.y <= 0):
         variablesBola.velocidade_y = (-1)*variablesBola.velocidade_y
 
     # verifica a colisão nas bordas da tela para o jogador
@@ -304,10 +311,6 @@ def update(deltaTime):
 
 # atualiza os gráficos na tela do jogo
 def render(deltaTime):
-    global variablesJogador
-    global variablesMaquina
-    global variablesBola
-
     # desenha o jogador
     pygame.draw.rect(screen, (255, 255, 255), (variablesJogador.x, variablesJogador.y, variablesJogador.largura, variablesJogador.altura))
 
@@ -316,6 +319,17 @@ def render(deltaTime):
 
     # desenha a bola
     pygame.draw.circle(screen, (255, 255, 255), (variablesBola.x, variablesBola.y), variablesBola.raio)
+
+    # desenha a linha central
+    pygame.draw.line(screen, (255, 255, 255), (screenSize[0] / 2.0, 0), (screenSize[0] / 2.0, screenSize[1]))
+
+    # cria uma surface da fonte com a escrita que a gente quer
+    scoreJogador = gameFont.render(f"Score: {variablesJogador.score}", 1, (255, 255, 255))
+    scoreMaquina = gameFont.render(f"Score: {variablesMaquina.score}", 1, (255, 255, 255))
+
+    # desenha as surfaces dos textos
+    screen.blit(scoreJogador, (10, 10))
+    screen.blit(scoreMaquina, (screenSize[0] - scoreMaquina.get_width() - 10, 10))
     
 # inicia o programa (chama o main)
 gameMain()
