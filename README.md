@@ -1,2 +1,2 @@
 # Pong
-Programa criado para ensinar pygame na monitoria da aula de computação cientifica em python
+Jogo do Pong Criado para Ensinar Pygame na Monitoria da Aula de Computação Cientifica em Python
