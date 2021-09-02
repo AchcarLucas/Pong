@@ -127,6 +127,7 @@ variablesBola.raio = 8
 variablesBola.x_inicial = screenSize[0] / 2.0
 variablesBola.y_inicial = screenSize[1] / 2.0
 
+# Coloca a bola no centro e randomiza o cone de lançamento
 def resetBall():
     # coloca a bola no centro da tela novamente
     variablesBola.x = variablesBola.x_inicial
@@ -152,6 +153,7 @@ def resetBall():
     variablesBola.velocidade_x = randDir * randVelocity *  math.sin(angleRand)
     variablesBola.velocidade_y = randVelocity * math.cos(angleRand)
 
+# reverte a bola e randomiza a velocidade e um cone de lançamento em relação ao jogador ou a máquina (faz a bola ir para o inimigo)
 def revertBall():
     # reverte a direção da bola
     variablesBola.dir = (-1.0) * variablesBola.dir
@@ -293,7 +295,7 @@ def update(deltaTime):
 
     """
 
-     # verifica as colisões das bordas superior e inferior (reverte a velocidade y se ocorrer colisão)
+     # verifica as colisões das bordas superior e inferior (reverte a velocidade y se ocorrer colisão ou seja, faz um espelhamento em relação a vertical)
     if(variablesBola.y >= screenSize[1] - variablesBola.raio or variablesBola.y <= 0):
         variablesBola.velocidade_y = (-1)*variablesBola.velocidade_y
 
