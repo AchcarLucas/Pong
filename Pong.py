@@ -6,6 +6,7 @@ import math
 screenSize = (800, 600)
 # cria a tela e salva a instância dessa tela em screen
 screen = pygame.display.set_mode(screenSize)
+# adiciona um nome no caption da tela
 pygame.display.set_caption("Pong - Jogo")
 
 # inicializa a fonte
@@ -116,11 +117,12 @@ class GBall:
 #          Bola          #
 ##########################
 
+# math.pi / 4 = 45º (ângulo de abertura)
 randomAngle = math.pi / 4
 
 variablesBola = GBall()
 
-# raio da bola
+# raio da bola em pixels
 variablesBola.raio = 8
 
 # salva a posição inicial da bola (para usar no reset)
