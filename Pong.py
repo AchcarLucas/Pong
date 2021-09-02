@@ -268,10 +268,11 @@ def update(deltaTime):
     elif(pygame.Rect.colliderect(rectMaquina, rectBola) and variablesBola.dir == 1):
         # revert o lance com um novo cone de lançamento
         revertBall()
+
     '''
         Essa parte do código detecta se ocorreu uma bola fora
-        se sim, reseta a bola da os pontos ao jogador e inicia
-        uma nova jogada
+        se sim, reseta a bola da os pontos ao jogador ou máquina 
+        e inicia uma nova jogada
     '''
 
     # verifica se ocorreu alguma colisão nas laterais esquerda ou direita
@@ -297,7 +298,7 @@ def update(deltaTime):
 
     """
 
-     # verifica as colisões das bordas superior e inferior (reverte a velocidade y se ocorrer colisão ou seja, faz um espelhamento em relação a vertical)
+    # verifica as colisões da bola nas bordas superior e inferior (reverte a velocidade y se ocorrer colisão ou seja, faz um espelhamento em relação a vertical)
     if(variablesBola.y >= screenSize[1] - variablesBola.raio or variablesBola.y <= 0):
         variablesBola.velocidade_y = (-1)*variablesBola.velocidade_y
 
