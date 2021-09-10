@@ -258,7 +258,7 @@ def update(deltaTime):
     # cria rect do jogador, máquina e da bola para utilizar com a função colliderect do módulo Rect
     rectJogador = pygame.Rect((variablesJogador.x, variablesJogador.y, variablesJogador.largura, variablesJogador.altura))
     rectMaquina = pygame.Rect((variablesMaquina.x, variablesMaquina.y, variablesMaquina.largura, variablesMaquina.altura))
-    rectBola    = pygame.Rect((variablesBola.x, variablesBola.y, variablesBola.raio, variablesBola.raio))
+    rectBola    = pygame.Rect((variablesBola.x - variablesBola.raio, variablesBola.y - variablesBola.raio, 2 * variablesBola.raio, 2 * variablesBola.raio))
 
     # verifica se a bola colidiu com o jogador ou máquina, se sim, modifica a direção da bola com novos parametros
     # a verificação da dir é necessário para não ocorrer mais de uma detecção de colisão
